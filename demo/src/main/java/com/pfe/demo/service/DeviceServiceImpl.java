@@ -30,12 +30,21 @@ public class DeviceServiceImpl implements DeviceService{
 
     @Override
     public Device updateDevice(Device device) {
-//        Device existingDevice = deviceRepository.findById(device.getImei()).get()
-        return null;
+       Device existingDevice = deviceRepository.findById(device.getImei()).get();
+       existingDevice.setBrand(device.getBrand());
+       existingDevice.setModel(device.getModel());
+       existingDevice.setStatus(device.getStatus());
+       existingDevice.setSupplier(device.getSupplier());
+       existingDevice.setPurchase_date(device.getPurchase_date());
+       existingDevice.setBatteryId(device.getBatteryId());
+       existingDevice.setInterventions(device.getInterventions());
+
+       Device updatedDevice = deviceRepository.save(existingDevice);
+        return updatedDevice;
     }
 
     @Override
     public void deleteDevice(Long deviceId) {
-
+        deviceRepository.deleteById(deviceId);
     }
 }
