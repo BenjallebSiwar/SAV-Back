@@ -24,10 +24,7 @@ public class UserController {
     @Autowired
     private JwtService jwtService;
 
-    @GetMapping("/welcome")
-    public String welcome(){
-        return "Welcome to Spring Security tutorials !!";
-    }
+
     @PostMapping("/addUser")
     public String addUser(@RequestBody UserInfo userInfo){
         return userInfoService.addUser(userInfo);
