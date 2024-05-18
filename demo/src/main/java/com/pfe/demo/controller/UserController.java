@@ -16,6 +16,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/auth")
+@CrossOrigin(origins="*",maxAge = 4800)
 public class UserController {
     @Autowired
     private UserInfoService userInfoService;
@@ -30,10 +31,11 @@ public class UserController {
         return userInfoService.addUser(userInfo);
     }
 
-    @PostMapping("/login")
+    @PostMapping(value="/login")
     public String addUser(@RequestBody AuthRequest authRequest){
         Authentication authenticate = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authRequest.getUserName(), authRequest.getPassword()));
         if(authenticate.isAuthenticated()){
+
             return jwtService.generateToken(authRequest.getUserName());
         }else {
             throw new UsernameNotFoundException("Invalid user request");
