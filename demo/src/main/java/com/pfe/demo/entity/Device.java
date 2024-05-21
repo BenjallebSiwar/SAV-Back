@@ -25,7 +25,9 @@ public class Device {
     private String supplier ;
     private LocalDateTime purchase_date;
     private String batteryId;
-
+    private Long nbRetourSav;
+    private Long guarantee;
+    private Long terminal ;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "device")
     private Set<Intervention> interventions ;
 

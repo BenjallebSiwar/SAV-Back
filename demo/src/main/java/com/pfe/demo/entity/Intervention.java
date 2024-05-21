@@ -24,6 +24,7 @@ public class Intervention {
     private String description ;
     private LocalDateTime createdAt ;
     private String status ;
+    private String workflow ;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "intervention")
     private Set<Swap_status> Swap_statuses;
