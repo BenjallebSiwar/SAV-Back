@@ -16,8 +16,7 @@ import java.util.Set;
 public class Device {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Size(max = 18)
-    @Size(min = 18)
+
     private Long imei ;
     private String brand ;
     private String model ;
