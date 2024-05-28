@@ -15,13 +15,13 @@ public class Intervention_status {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
-    private String status;
+    private Integer status;
     private LocalDateTime createdAt;
     private String local;
     private String amount;
     private String marque;
     private String modele;
-    private String newIMEI;
+    private Long newIMEI;
     private String pdfLink;
 
     @ManyToOne

@@ -54,7 +54,16 @@ public class InterventionController {
     }
 
 
-
+    // New endpoint to get intervention by IMEI
+    @GetMapping("/getInterventionByImei/{imei}")
+    public ResponseEntity<Intervention> getInterventionByImei(@PathVariable("imei") Long imei) {
+        Intervention intervention = interventionService.getInterventionByImei(imei);
+        if (intervention != null) {
+            return new ResponseEntity<>(intervention, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
 
 
 }

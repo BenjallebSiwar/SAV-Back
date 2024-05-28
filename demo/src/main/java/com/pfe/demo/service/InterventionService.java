@@ -16,4 +16,6 @@ public interface InterventionService {
     Intervention updateIntervention(Intervention intervention);
 
     void deleteIntervention(Integer interventionId);
+
+   Intervention getInterventionByImei(Long imei);
 }

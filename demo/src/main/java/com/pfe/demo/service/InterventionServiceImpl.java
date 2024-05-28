@@ -54,6 +54,14 @@ public class InterventionServiceImpl implements InterventionService{
 
     @Override
     public void deleteIntervention(Integer interventionId) {
+
         interventionRepository.deleteById(interventionId);
     }
+
+    @Override
+    public Intervention getInterventionByImei(Long imei) {
+        Optional<Intervention> optionalIntervention = Optional.ofNullable(interventionRepository.findByImei(imei));
+        return optionalIntervention.get();
+    }
+
 }

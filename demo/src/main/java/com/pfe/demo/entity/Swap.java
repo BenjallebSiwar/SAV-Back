@@ -15,7 +15,7 @@ public class Swap {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id ;
-    private String imei;
+    private Long imei;
     private String brand;
     private String model;
     private String price;

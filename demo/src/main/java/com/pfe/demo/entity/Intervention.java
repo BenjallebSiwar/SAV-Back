@@ -17,14 +17,15 @@ public class Intervention {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id ;
-    private String imei ;
-    private String clientId ;
+    private Long imei ;
+    private Long clientId ;
     private String panneType ;
     private String accessories ;
     private String description ;
     private LocalDateTime createdAt ;
-    private String status ;
+    private Integer status ;
     private String workflow ;
+
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "intervention")
     private Set<Swap_status> Swap_statuses;

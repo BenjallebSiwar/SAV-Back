@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface InterventionRepository extends JpaRepository<Intervention, Integer> {
+   Intervention findByImei(Long imei);
 }
