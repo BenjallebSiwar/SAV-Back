@@ -50,7 +50,10 @@ public class Intervention {
     private Set<Intervention_status> intervention_statuses;
 
 
-
+    @PrePersist
+    protected void onCreate() {
+        createdAt = LocalDateTime.now();
+    }
 
 
 }

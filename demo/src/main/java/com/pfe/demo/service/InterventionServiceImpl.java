@@ -51,7 +51,7 @@ public class InterventionServiceImpl implements InterventionService{
         existingIntervention.setClient(intervention.getClient());
         existingIntervention.setDevice(intervention.getDevice());
         existingIntervention.setIntervention_statuses(intervention.getIntervention_statuses());
-        existingIntervention.setClientId(intervention.getClientId());
+//        existingIntervention.setClientId(intervention.getClientId());
         existingIntervention.setSwaps(intervention.getSwaps());
         existingIntervention.setSwap_statuses(intervention.getSwap_statuses());
         existingIntervention.setAvailable_clients(intervention.getAvailable_clients());
