@@ -15,6 +15,7 @@ public interface InterventionService {
     List<Intervention> getAllInterventions();
 
     Intervention updateIntervention(Intervention intervention);
+    List<Intervention> getInterventionsByClientCin(Long cin);
 
     void deleteIntervention(Integer interventionId);
 }

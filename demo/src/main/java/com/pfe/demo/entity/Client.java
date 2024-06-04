@@ -16,7 +16,7 @@ import java.util.Set;
 @NoArgsConstructor
 public class Client {
     @Id
-    @GeneratedValue
+
     private Long cin;
     private String firstName;
     private String lastName;

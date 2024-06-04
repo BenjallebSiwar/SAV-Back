@@ -64,6 +64,11 @@ public class InterventionServiceImpl implements InterventionService{
     }
 
     @Override
+    public List<Intervention> getInterventionsByClientCin(Long cin) {
+        return interventionRepository.findByClientCin(cin);
+    }
+
+    @Override
     public void deleteIntervention(Integer interventionId) {
 
         interventionRepository.deleteById(interventionId);

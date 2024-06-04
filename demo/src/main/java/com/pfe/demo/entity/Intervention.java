@@ -39,8 +39,10 @@ public class Intervention {
     private Set<Available_client> Available_clients;
 
     @ManyToOne
+    @JoinColumn(name = "client_cin", referencedColumnName = "cin", nullable = true)
     Client client;
     @ManyToOne
+    @JoinColumn(name = "device_imei", referencedColumnName = "imei")
     Device device;
     @ManyToOne
     Discharge discharge;

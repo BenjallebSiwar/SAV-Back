@@ -14,6 +14,7 @@ import java.util.List;
 
 @RestController
 @AllArgsConstructor
+@CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping("/intervention")
 public class InterventionController {
     @Autowired
@@ -61,4 +62,9 @@ public class InterventionController {
         interventionService.deleteIntervention(interventionId);
         return new ResponseEntity<>("Intervention successfully deleted!", HttpStatus.OK);
     }
+    @GetMapping("/getInterventionByClientCin/{cin}")
+    public List<Intervention> getInterventionsByClientCin(@PathVariable Long cin) {
+        return interventionService.getInterventionsByClientCin(cin);
+    }
+
 }
