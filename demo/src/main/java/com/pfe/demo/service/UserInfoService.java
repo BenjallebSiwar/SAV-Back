@@ -42,8 +42,4 @@ public class UserInfoService implements UserDetailsService {
     public UserInfo getUser(Integer id){
         return userInfoRepository.findById(id).get();
     }
-
-
-
-
 }

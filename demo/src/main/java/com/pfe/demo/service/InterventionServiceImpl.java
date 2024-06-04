@@ -22,6 +22,17 @@ public class InterventionServiceImpl implements InterventionService{
         Optional<Intervention> optionalIntervention = interventionRepository.findById(interventionId);
         return optionalIntervention.get();
     }
+    @Override
+    public Intervention getInterventionByImei(Long imei) {
+        Optional<Intervention> optionalIntervention = Optional.ofNullable(interventionRepository.findByImei(imei));
+        return optionalIntervention.get();
+    }
+    @Override
+    public Intervention getInterventionByCin(Integer cin) {
+        Optional<Intervention> optionalIntervention = (interventionRepository.findById(cin));
+        return optionalIntervention.get();
+    }
+
 
     @Override
     public List<Intervention> getAllInterventions() {
@@ -57,11 +68,4 @@ public class InterventionServiceImpl implements InterventionService{
 
         interventionRepository.deleteById(interventionId);
     }
-
-    @Override
-    public Intervention getInterventionByImei(Long imei) {
-        Optional<Intervention> optionalIntervention = Optional.ofNullable(interventionRepository.findByImei(imei));
-        return optionalIntervention.get();
-    }
-
 }

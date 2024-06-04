@@ -18,13 +18,15 @@ public class Intervention {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id ;
     private Long imei ;
-    private Long clientId ;
     private String panneType ;
     private String accessories ;
     private String description ;
     private LocalDateTime createdAt ;
     private Integer status ;
     private String workflow ;
+    private String batterie ;
+    private String etatTerminal ;
+    private String terminalDePret ;
 
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "intervention")

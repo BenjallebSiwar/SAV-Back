@@ -31,6 +31,16 @@ public class InterventionController {
         Intervention intervention = interventionService.getInterventionById(interventionId);
         return new ResponseEntity<>(intervention, HttpStatus.OK);
     }
+    @GetMapping("/getInterventionByCin/{cin}")
+    public ResponseEntity<Intervention> getInterventionByCin(@PathVariable("cin") Integer clientCin){
+        Intervention intervention = interventionService.getInterventionByCin(clientCin);
+        return new ResponseEntity<>(intervention, HttpStatus.OK);
+    }
+    @GetMapping("/getInterventionByImei/{imei}")
+    public ResponseEntity<Intervention> getInterventionByImei(@PathVariable("imei") Long imei) {
+        Intervention intervention = interventionService.getInterventionByImei(imei);
+        return new ResponseEntity<>(intervention, HttpStatus.OK);
+    }
 
     @GetMapping("/getAllInterventions")
     public ResponseEntity<List<Intervention>> getAllInterventions(){
@@ -39,7 +49,6 @@ public class InterventionController {
     }
 
     @PutMapping("/updateInterventionById/{id}")
-
     public ResponseEntity<Intervention> updateIntervention(@PathVariable("id") Integer InterventionId,
                                                      @RequestBody Intervention intervention){
         intervention.setId(InterventionId);
@@ -52,18 +61,4 @@ public class InterventionController {
         interventionService.deleteIntervention(interventionId);
         return new ResponseEntity<>("Intervention successfully deleted!", HttpStatus.OK);
     }
-
-
-    // New endpoint to get intervention by IMEI
-    @GetMapping("/getInterventionByImei/{imei}")
-    public ResponseEntity<Intervention> getInterventionByImei(@PathVariable("imei") Long imei) {
-        Intervention intervention = interventionService.getInterventionByImei(imei);
-        if (intervention != null) {
-            return new ResponseEntity<>(intervention, HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-    }
-
-
 }
