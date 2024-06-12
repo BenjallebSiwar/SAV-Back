@@ -11,7 +11,7 @@ import java.util.Set;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Panne {
+public class  Panne {
     @Id
     @GeneratedValue
     private Long id ;

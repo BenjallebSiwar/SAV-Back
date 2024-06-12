@@ -14,6 +14,10 @@ public class InterventionServiceImpl implements InterventionService{
     private InterventionRepository interventionRepository;
     @Override
     public Intervention createIntervention(Intervention intervention) {
+        // CREATE OR CONNECT CLIENT
+        // CREATE INTERVENTION STATUS
+        // CREATE NEW INTERVENTION
+        // UPDATE DEVICE NB_ROUTER_SAV
         return interventionRepository.save(intervention);
     }
 

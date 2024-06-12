@@ -52,10 +52,10 @@ public class Intervention {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "intervention")
     private Set<Intervention_status> intervention_statuses;
 
-    @ManyToMany
-    private Set<Accessoires> accessoires;
-    @ManyToMany
-    private Set<Panne> pannes ;
+//    @ManyToMany
+    private Set<String> accessoires;
+//    @ManyToMany
+    private Set<String> pannes ;
     @PrePersist
     protected void onCreate() {
         createdAt = LocalDateTime.now();
