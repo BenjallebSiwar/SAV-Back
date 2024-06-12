@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -18,8 +19,8 @@ public class Intervention {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id ;
     private Long imei ;
-    private String panneType ;
-    private String accessories ;
+
+
     private String description ;
     private LocalDateTime createdAt ;
     private Integer status ;
@@ -51,7 +52,10 @@ public class Intervention {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "intervention")
     private Set<Intervention_status> intervention_statuses;
 
-
+    @ManyToMany
+    private Set<Accessoires> accessoires;
+    @ManyToMany
+    private Set<Panne> pannes ;
     @PrePersist
     protected void onCreate() {
         createdAt = LocalDateTime.now();

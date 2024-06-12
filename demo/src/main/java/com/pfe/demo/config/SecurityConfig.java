@@ -36,7 +36,7 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         return httpSecurity.csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth->auth
-                        .requestMatchers("/auth/**","client/**","/device/**","/discharge/**","/intervention/**","/interventionStatus/**","/swapStatus/**","/swap/**","/availableClient/**")
+                        .requestMatchers("/auth/**","client/**","/device/**","/discharge/**","/intervention/**","/interventionStatus/**","/swapStatus/**","/swap/**","/availableClient/**", "/panne/**", "/accessoires/**")
                         .permitAll()
                         .anyRequest().authenticated())
                 .sessionManagement(session->session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))

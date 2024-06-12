@@ -45,8 +45,7 @@ public class InterventionServiceImpl implements InterventionService{
         existingIntervention.setCreatedAt(intervention.getCreatedAt());
         existingIntervention.setIntervention_statuses(intervention.getIntervention_statuses());
         existingIntervention.setUserInfo(intervention.getUserInfo());
-        existingIntervention.setAccessories(intervention.getAccessories());
-        existingIntervention.setPanneType(intervention.getPanneType());
+
         existingIntervention.setDescription(intervention.getDescription());
         existingIntervention.setClient(intervention.getClient());
         existingIntervention.setDevice(intervention.getDevice());
