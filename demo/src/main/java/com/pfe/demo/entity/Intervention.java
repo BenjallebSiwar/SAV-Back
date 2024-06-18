@@ -23,11 +23,13 @@ public class Intervention {
 
     private String description ;
     private LocalDateTime createdAt ;
-    private Integer status ;
+    private String etat ;
     private String workflow ;
     private String batterie ;
     private String etatTerminal ;
     private String terminalDePret ;
+    private String status;
+
 
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "intervention")
@@ -46,6 +48,7 @@ public class Intervention {
     @JoinColumn(name = "device_imei", referencedColumnName = "imei")
     Device device;
     @ManyToOne
+    @JoinColumn(name = "discharge_id", referencedColumnName = "id", nullable = true)
     Discharge discharge;
     @ManyToOne
     UserInfo userInfo;
@@ -61,5 +64,21 @@ public class Intervention {
         createdAt = LocalDateTime.now();
     }
 
-
+    public String getRepairType() {
+        if ("externe".equalsIgnoreCase(workflow)) {
+            return "En attente Envoi Réparateur externe";
+        } else if ("interne".equalsIgnoreCase(workflow)) {
+            return "En attente Envoi Réparateur interne";
+        } else {
+            return "En attente Envoi Workflow normal"; // Assuming "normal" or other cases should return a default value
+        }
+    }
+    protected void Create() {
+        if (etat == null) {
+            etat = "en cours de diagnostic";
+        }
+        if (status == null) {
+            status = "ouverte";
+        }
+    }
 }

@@ -14,10 +14,12 @@ public class InterventionServiceImpl implements InterventionService{
     private InterventionRepository interventionRepository;
     @Override
     public Intervention createIntervention(Intervention intervention) {
-        // CREATE OR CONNECT CLIENT
-        // CREATE INTERVENTION STATUS
-        // CREATE NEW INTERVENTION
-        // UPDATE DEVICE NB_ROUTER_SAV
+        if (intervention.getStatus() == null) {
+            intervention.setStatus("ouverte");
+        }
+        if (intervention.getEtat() == null) {
+            intervention.setEtat("en cours de diagnostic");
+        }
         return interventionRepository.save(intervention);
     }
 
@@ -72,8 +74,36 @@ public class InterventionServiceImpl implements InterventionService{
     }
 
     @Override
+    public List<Intervention> getInterventionsWithInterneWorkflow() {
+        return interventionRepository.findByWorkflow("interne");
+    }
+
+    @Override
+    public List<Intervention> getInterventionsWithExterneWorkflow() {
+        return interventionRepository.findByWorkflow("externe");
+    }
+
+    @Override
     public void deleteIntervention(Integer interventionId) {
 
         interventionRepository.deleteById(interventionId);
+    }
+
+    @Override
+    public List<Intervention> findByDischargeIsNotNull() {
+        return interventionRepository.findByDischargeIsNotNull();
+    }
+
+
+    @Override
+    public String getRepairType(Intervention intervention) {
+        String workflow = intervention.getWorkflow();
+        if ("externe".equalsIgnoreCase(workflow)) {
+            return "En attente Envoi Réparateur externe";
+        } else if ("interne".equalsIgnoreCase(workflow)) {
+            return "En attente Envoi Réparateur interne";
+        } else {
+            return "En attente Envoi Workflow normal"; // Assuming "normal" or other cases should return a default value
+        }
     }
 }

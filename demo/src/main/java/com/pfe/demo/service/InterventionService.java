@@ -1,6 +1,7 @@
 package com.pfe.demo.service;
 
 
+import com.pfe.demo.entity.Discharge;
 import com.pfe.demo.entity.Intervention;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +17,11 @@ public interface InterventionService {
 
     Intervention updateIntervention(Intervention intervention);
     List<Intervention> getInterventionsByClientCin(Long cin);
+    List<Intervention> getInterventionsWithInterneWorkflow();
+    List<Intervention> getInterventionsWithExterneWorkflow();
+    String getRepairType(Intervention intervention);
 
     void deleteIntervention(Integer interventionId);
+
+    List<Intervention> findByDischargeIsNotNull();
 }

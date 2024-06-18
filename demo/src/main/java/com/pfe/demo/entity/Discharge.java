@@ -24,4 +24,9 @@ public class Discharge {
     @ManyToOne
     UserInfo userInfo;
 
+    @PrePersist
+    protected void onCreate() {
+        createdAt = LocalDateTime.now();
+    }
+
 }

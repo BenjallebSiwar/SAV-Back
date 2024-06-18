@@ -27,6 +27,7 @@ public class Device {
     private String batteryId;
     private Long nbRetourSav;
     private Long guarantee;
+    private String boutique ;
     private Long terminal ;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "device")
     private Set<Intervention> interventions ;
@@ -37,6 +38,7 @@ public class Device {
         long months = ChronoUnit.MONTHS.between(purchase_date, now);
         return Math.max(guarantee - months, 0); // Ensure remaining warranty is not negative
     }
+
 
 
 }

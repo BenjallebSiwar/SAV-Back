@@ -4,6 +4,8 @@ import com.pfe.demo.entity.Accessoires;
 import com.pfe.demo.entity.Panne;
 import com.pfe.demo.service.AccessoiresService;
 import com.pfe.demo.service.PanneService;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,6 +14,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@AllArgsConstructor
+@NoArgsConstructor
 @RequestMapping("/panne")
 @CrossOrigin(origins = "http://localhost:3000")
 public class PanneController {

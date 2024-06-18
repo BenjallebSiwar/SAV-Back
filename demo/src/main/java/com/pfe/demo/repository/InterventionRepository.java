@@ -11,4 +11,6 @@ import java.util.List;
 public interface InterventionRepository extends JpaRepository<Intervention, Integer> {
    Intervention findByImei(Long imei);
    List<Intervention> findByClientCin(@Param("cin") Long cin);
+   List<Intervention> findByWorkflow(String workflow);
+   List<Intervention> findByDischargeIsNotNull();
 }

@@ -2,6 +2,7 @@ package com.pfe.demo.controller;
 
 
 
+import com.pfe.demo.entity.Discharge;
 import com.pfe.demo.entity.Intervention;
 import com.pfe.demo.service.InterventionService;
 import lombok.AllArgsConstructor;
@@ -65,6 +66,28 @@ public class InterventionController {
     @GetMapping("/getInterventionByClientCin/{cin}")
     public List<Intervention> getInterventionsByClientCin(@PathVariable Long cin) {
         return interventionService.getInterventionsByClientCin(cin);
+    }
+    @GetMapping("/interne")
+    public List<Intervention> getInterventionsWithInterneWorkflow() {
+        return interventionService.getInterventionsWithInterneWorkflow();
+    }
+    @GetMapping("/externe")
+    public List<Intervention> getInterventionsWithExterneWorkflow() {
+        return interventionService.getInterventionsWithExterneWorkflow();
+    }
+    @GetMapping("/getRepairType/{id}")
+    public ResponseEntity<String> getRepairType(@PathVariable("id") Integer id) {
+        Intervention intervention = interventionService.getInterventionById(id);
+        if (intervention == null) {
+            return new ResponseEntity<>("Intervention not found", HttpStatus.NOT_FOUND);
+        }
+        String repairType = interventionService.getRepairType(intervention);
+        return new ResponseEntity<>(repairType, HttpStatus.OK);
+    }
+
+    @GetMapping("/getInterventionDecharge")
+    public List<Intervention> getAllInterventionsWithDischarge() {
+        return interventionService.findByDischargeIsNotNull();
     }
 
 }
