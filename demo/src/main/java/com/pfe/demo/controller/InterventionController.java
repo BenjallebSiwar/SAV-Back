@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @AllArgsConstructor
@@ -88,6 +89,11 @@ public class InterventionController {
     @GetMapping("/getInterventionDecharge")
     public List<Intervention> getAllInterventionsWithDischarge() {
         return interventionService.findByDischargeIsNotNull();
+    }
+    @GetMapping("/getInterventionByDechargeId/{dischargeId}")
+    public ResponseEntity<Intervention> getInterventionByDischargeId(@PathVariable Integer dischargeId) {
+        Optional<Intervention> intervention = interventionService.getInterventionByDischargeId(dischargeId);
+        return intervention.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
 }

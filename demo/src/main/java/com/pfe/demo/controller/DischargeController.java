@@ -1,7 +1,9 @@
 package com.pfe.demo.controller;
 
 import com.pfe.demo.entity.Discharge;
+import com.pfe.demo.entity.Intervention;
 import com.pfe.demo.service.DischargeService;
+import com.pfe.demo.service.InterventionService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,9 +18,20 @@ import java.util.List;
 public class DischargeController {
     @Autowired
     private DischargeService dischargeService;
+    @Autowired
+    private InterventionService interventionService;
+
     @PostMapping("/addDischarge")
     public ResponseEntity<Discharge> createDischarge(@RequestBody Discharge discharge) {
         Discharge savedDischarge = dischargeService.createDischarge(discharge);
+
+        // Update interventions with the discharge ID
+        for (Integer interventionId : discharge.getSelectedInterventions()) {
+            Intervention intervention = interventionService.getInterventionById(interventionId);
+            intervention.setDischarge(savedDischarge);
+            interventionService.updateIntervention(intervention);
+        }
+
         return new ResponseEntity<>(savedDischarge, HttpStatus.CREATED);
     }
 
@@ -35,9 +48,8 @@ public class DischargeController {
     }
 
     @PutMapping("/updateDischargeById/{id}")
-
     public ResponseEntity<Discharge> updateDischarge(@PathVariable("id") Integer dischargeId,
-                                           @RequestBody Discharge discharge){
+                                                     @RequestBody Discharge discharge){
         discharge.setId(dischargeId);
         Discharge updatedDischarge = dischargeService.updateDischarge(discharge);
         return new ResponseEntity<>(updatedDischarge, HttpStatus.OK);
@@ -48,10 +60,4 @@ public class DischargeController {
         dischargeService.deleteDischarge(dischargeId);
         return new ResponseEntity<>("Discharge successfully deleted!", HttpStatus.OK);
     }
-
-
-
-
-
-
 }

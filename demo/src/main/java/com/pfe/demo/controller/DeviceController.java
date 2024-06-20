@@ -21,7 +21,7 @@ public class DeviceController {
         Device savedDevice = deviceService.createDevice(device);
         return new ResponseEntity<>(savedDevice, HttpStatus.CREATED);
     }
-    @GetMapping("getDeviceById/{id}")
+    @GetMapping("/getDeviceById/{id}")
     public ResponseEntity<Device> getDeviceById(@PathVariable("id") Long DeviceId){
         Device device = deviceService.getDeviceById(DeviceId);
         return new ResponseEntity<>(device, HttpStatus.OK);

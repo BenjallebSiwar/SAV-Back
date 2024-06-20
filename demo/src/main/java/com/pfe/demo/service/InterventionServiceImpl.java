@@ -106,4 +106,8 @@ public class InterventionServiceImpl implements InterventionService{
             return "En attente Envoi Workflow normal"; // Assuming "normal" or other cases should return a default value
         }
     }
+    @Override
+    public Optional<Intervention> getInterventionByDischargeId(Integer dischargeId) {
+        return interventionRepository.findByDischargeId(dischargeId);
+    }
 }

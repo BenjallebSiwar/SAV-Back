@@ -6,6 +6,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface InterventionRepository extends JpaRepository<Intervention, Integer> {
@@ -13,4 +14,5 @@ public interface InterventionRepository extends JpaRepository<Intervention, Inte
    List<Intervention> findByClientCin(@Param("cin") Long cin);
    List<Intervention> findByWorkflow(String workflow);
    List<Intervention> findByDischargeIsNotNull();
+   Optional<Intervention> findByDischargeId(Integer dischargeId);
 }

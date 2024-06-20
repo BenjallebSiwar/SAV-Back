@@ -6,6 +6,7 @@ import com.pfe.demo.entity.Intervention;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface InterventionService {
 
@@ -24,4 +25,5 @@ public interface InterventionService {
     void deleteIntervention(Integer interventionId);
 
     List<Intervention> findByDischargeIsNotNull();
+    Optional<Intervention> getInterventionByDischargeId(Integer dischargeId);
 }

@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 import java.util.Set;
+import java.util.List;
 
 @Entity
 @Data
@@ -18,6 +19,9 @@ public class Discharge {
     private Integer id ;
     private String destination ;
     private LocalDateTime createdAt;
+
+    @ElementCollection
+    private List<Integer> selectedInterventions;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "discharge")
     private Set<Intervention> interventions;
