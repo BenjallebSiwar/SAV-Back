@@ -24,7 +24,7 @@ public class Device {
     private String status;
     private String supplier ;
     private LocalDateTime purchase_date;
-    private String batteryId;
+    private Long batterie ;
     private Long nbRetourSav;
     private Long guarantee;
     private String boutique ;

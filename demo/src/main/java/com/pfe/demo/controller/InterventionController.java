@@ -95,5 +95,14 @@ public class InterventionController {
         Optional<Intervention> intervention = interventionService.getInterventionByDischargeId(dischargeId);
         return intervention.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
+    @GetMapping("/hasDischarge/{imei}")
+    public ResponseEntity<Boolean> hasDischarge(@PathVariable("imei") Long imei) {
+        Intervention intervention = interventionService.getInterventionByImei(imei);
+        if (intervention == null) {
+            return new ResponseEntity<>(false, HttpStatus.NOT_FOUND);
+        }
+        boolean hasDischarge = intervention.getDischarge() != null;
+        return new ResponseEntity<>(hasDischarge, HttpStatus.OK);
+    }
 
 }

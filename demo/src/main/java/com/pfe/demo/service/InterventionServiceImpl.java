@@ -110,4 +110,11 @@ public class InterventionServiceImpl implements InterventionService{
     public Optional<Intervention> getInterventionByDischargeId(Integer dischargeId) {
         return interventionRepository.findByDischargeId(dischargeId);
     }
+
+    @Override
+    public boolean hasDischarge(Integer interventionId) {
+        Optional<Intervention> intervention = interventionRepository.findById(interventionId);
+        return intervention.map(value -> value.getDischarge() != null).orElse(false);
+    }
+
 }

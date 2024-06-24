@@ -26,4 +26,7 @@ public interface InterventionService {
 
     List<Intervention> findByDischargeIsNotNull();
     Optional<Intervention> getInterventionByDischargeId(Integer dischargeId);
+    boolean hasDischarge(Integer interventionId);
+
+
 }

@@ -18,11 +18,11 @@ public class Intervention_status {
     private Integer status;
     private LocalDateTime createdAt;
     private String local;
-    private String amount;
-    private String marque;
-    private String modele;
-    private Long newIMEI;
-    private String pdfLink;
+        private String amount;
+        private String marque;
+        private String modele;
+        private Long newIMEI;
+        private String pdfLink;
 
     @ManyToOne
     Intervention intervention;

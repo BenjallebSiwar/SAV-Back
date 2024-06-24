@@ -36,7 +36,7 @@ public class DeviceServiceImpl implements DeviceService{
        existingDevice.setStatus(device.getStatus());
        existingDevice.setSupplier(device.getSupplier());
        existingDevice.setPurchase_date(device.getPurchase_date());
-       existingDevice.setBatteryId(device.getBatteryId());
+       existingDevice.setBatterie(device.getBatterie());
        existingDevice.setInterventions(device.getInterventions());
 
        Device updatedDevice = deviceRepository.save(existingDevice);

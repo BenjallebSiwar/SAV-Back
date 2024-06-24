@@ -21,6 +21,7 @@ public class InterventionStatusController {
     @PostMapping("/addInterventionStatus")
     public ResponseEntity<Intervention_status> createInterventionStatus(@RequestBody Intervention_status interventionStatus) {
         Intervention_status savedInterventionStatus = interventionStatusService.createInterventionStatus(interventionStatus);
+       // CHANGE DEVICE STATUS
         return new ResponseEntity<>(savedInterventionStatus, HttpStatus.CREATED);
     }
 
