@@ -40,7 +40,7 @@ public class SwapServiceImpl implements SwapService{
         existingSwap.setPrice(swap.getPrice());
         existingSwap.setModel(swap.getModel());
         existingSwap.setStatus(swap.getStatus());
-        existingSwap.setSwap_statuses(swap.getSwap_statuses());
+//        existingSwap.setSwap_statuses(swap.getSwap_statuses());
         existingSwap.setIntervention(swap.getIntervention());
 
         Swap updatedSwap = swapRepository.save(existingSwap);
@@ -51,4 +51,5 @@ public class SwapServiceImpl implements SwapService{
     public void deleteSwap(Integer swapId) {
         swapRepository.deleteById(swapId);
     }
+
 }

@@ -14,16 +14,19 @@ import java.util.Set;
 public class Swap {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id ;
+    private Integer id;
+
     private Long imei;
     private String brand;
     private String model;
     private String price;
     private String status;
+    private Integer retard;
 
     @ManyToOne
     Intervention intervention;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "swap")
-    private Set<Swap_status> swap_statuses;
+
+//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "swap")
+//    private Set<Swap_status> swap_statuses;
 
 }
